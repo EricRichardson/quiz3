@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     delete :destroy, on: :collection
   end
 
-  resources :ideas
+  resources :ideas do
+    resources :likes, only: [:create, :destroy]
+  end
 end
