@@ -9,5 +9,6 @@ Rails.application.routes.draw do
 
   resources :ideas do
     resources :likes, only: [:create, :destroy]
+    resources :members, only: [:create, :destroy]
   end
 end

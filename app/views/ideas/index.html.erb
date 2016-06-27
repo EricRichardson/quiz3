@@ -3,7 +3,9 @@
 <% @ideas.each do |idea| %>
 
   <%= link_to idea.title, idea_path(idea) %><br>
+  Members: <%= idea.members.count %> |
   Likes: <%= idea.likes.count %><br>
   <%= idea.body %>
   <hr>
+  
 <% end %>

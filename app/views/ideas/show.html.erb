@@ -1,6 +1,12 @@
 <h1><%= @idea.title %></h1>
 Created by: <%= @idea.user.name %> <br>
 Likes: <%= @idea.likes.count %> <br>
+Members:<br>
+
+<% @idea.users.each do |member| %>
+  <%= member.name %><br>
+<% end %>
+
 <%= @idea.body %>
 
 <% if can? :manage, @idea %>
@@ -13,5 +19,11 @@ Likes: <%= @idea.likes.count %> <br>
     <%= link_to "Unlike Idea", idea_like_path(@idea, @idea.like_for(current_user)), method: :delete %>
   <% else %>
     <%= link_to "Like Idea", idea_likes_path(@idea), method: :post %>
+  <% end %>
+
+  <% if @idea.joined_by?(current_user) %>
+    <%= link_to "Unjoin Idea", idea_member_path(@idea, @idea.join_for(current_user)), method: :delete %>
+  <% else %>
+    <%= link_to "Join Idea", idea_members_path(@idea), method: :post %>
   <% end %>
 <% end %>
