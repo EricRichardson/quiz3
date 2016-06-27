@@ -8,6 +8,7 @@ class LikesController < ApplicationController
     like.user = current_user
     like.idea = idea
     if like.save
+      LikeNotificationMailer.like_notification(idea).deliver_later
       redirect_to idea_path(idea), notice: "Idea Liked"
     else
       redirect_to idea_path(idea), alert: "An Error has occured"
