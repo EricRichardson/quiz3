@@ -19,6 +19,8 @@ class IdeasController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = Comment.order(created_at: :desc)
   end
 
   def index

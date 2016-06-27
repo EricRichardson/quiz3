@@ -11,8 +11,12 @@ class Ability
         can :read, :all
       end
 
-      can :manage, [Idea] do |i|
+      can :manage, Idea do |i|
          i.user == user
+      end
+
+      can :manage, Comment do |c|
+        c.user == user || c.idea.user == user
       end
     #
     # The first argument to `can` is the action you are giving the user

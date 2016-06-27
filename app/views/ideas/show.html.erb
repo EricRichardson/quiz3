@@ -27,3 +27,26 @@ Members:<br>
     <%= link_to "Join Idea", idea_members_path(@idea), method: :post %>
   <% end %>
 <% end %>
+<hr>
+
+<% if user_signed_in? %>
+
+  <h3>Leave a comment</h3>
+  <%= form_for [@idea, @comment] do |f| %>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+
+    <%= f.submit %>
+  <% end %>
+
+<% end %>
+
+<% @comments.each do |com| %>
+  By: <%= com.user.name %><br>
+  <%= com.body %>
+
+  <% if can? :manage, com %>
+    <%= link_to "Delete", idea_comment_path(@idea, com), method: :delete %>
+  <% end %>
+  <hr>
+<% end %>
