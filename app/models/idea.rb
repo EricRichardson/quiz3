@@ -1,4 +1,7 @@
 class Idea < ActiveRecord::Base
+
+  mount_uploader :picture, PictureUploader
+
   belongs_to :user
   has_many :users, through: :members
   has_many :members, dependent: :destroy

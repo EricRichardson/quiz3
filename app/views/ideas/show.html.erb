@@ -1,4 +1,9 @@
 <h1><%= @idea.title %></h1>
+
+<div class="picture">
+  <%= image_tag @idea.picture %>
+</div>
+
 Created by: <%= @idea.user.name %> <br>
 Likes: <%= @idea.likes.count %> <br>
 Members:<br>

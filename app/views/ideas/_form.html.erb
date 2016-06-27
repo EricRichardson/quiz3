@@ -8,6 +8,11 @@
     <%= f.text_area :body %>
   </div>
   <div>
+    <%= f.label :picture %>
+    <%= f.file_field :picture %>
+    <%= f.hidden_field :picture_cache %>
+  </div>
+  <div>
     <%= f.submit %>
   </div>
 <% end %>
